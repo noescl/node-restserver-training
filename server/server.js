@@ -7,12 +7,14 @@ const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false })); //Se puede llamar middleware
 
 // parse application/json
-app.use(bodyParser.json());
+app.use(bodyParser.json()); //Se puede llamar middleware
 
-app.use(require('./routes/usuario'));
+//configuracion global de rutas
+app.use(require('./routes/index')); //Se puede llamar middleware
+
 
 //mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
 //mongoose.connect('mongodb://localhost:27017/cafe', { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true },
