@@ -3,6 +3,7 @@ require('./config/config');
 const express = require('express')
     // Using Node.js `require()`
 const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 const bodyParser = require('body-parser');
@@ -14,6 +15,10 @@ app.use(bodyParser.json()); //Se puede llamar middleware
 
 //configuracion global de rutas
 app.use(require('./routes/index')); //Se puede llamar middleware
+
+//Habilitar la carpeta public
+app.use(express.static(path.resolve(__dirname, '../public')))
+    //console.log(path.resolve(__dirname, '../public'));
 
 
 //mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true, useUnifiedTopology: true});
